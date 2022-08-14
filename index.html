@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="styles\styles.css" />
     <link
       rel="icon"
       type="image/png"
@@ -19,15 +19,92 @@
     <title>Lucas Matheus | Intro section with dropdown navigation</title>
   </head>
   <body>
-    Features Company Careers About Login Register Make remote work Get your team
-    in sync, no matter your location. Streamline processes, create team rituals,
-    and watch productivity soar. Learn more
+    <!-- First, navbar!!-->
+    <nav>
+      <img src="./images/logo.svg" alt="company logo" />
+      <ol class="navbar__links">
+        <li class="links__item submenu">
+          <a href="#" ref="noopener" class="item__name"
+            >Features <img alt="arrow" class="links__item__arrow"
+            src="./images/icon-arrow-down.svg" />
+          </a>
+          <ol class="submenu__links first ">
+            <li>
+              <img src="./images/icon-todo.svg" alt="todo" /><a
+                href="#"
+                rel="noopener noreferrer"
+                >Todo List</a
+              >
+            </li>
+            <li>
+              <img src="./images/icon-calendar.svg" alt="calendar" /><a
+                href="#"
+                rel="noopener noreferrer"
+                >Calendar</a
+              >
+            </li>
+            <li>
+              <img src="./images/icon-reminders.svg" alt="reminder" /><a
+                href="#"
+                rel="noopener noreferrer"
+                >Reminders</a
+              >
+            </li>
+            <li>
+              <img src="./images/icon-planning.svg" alt="planning" /><a
+                href="#"
+                rel="noopener noreferrer"
+                >Planning</a
+              >
+            </li>
+          </ol>
+        </li>
+        <li class="links__item submenu">
+          <a href="#" ref="noopener" class="item__name"
+            >Company <img alt="arrow" class="links__item__arrow"
+            src="./images/icon-arrow-down.svg" /></a
+          >
+          <ol class="submenu__links">
+            <li><a href="#" rel="noopener noreferrer">History</a></li>
+            <li><a href="#" rel="noopener noreferrer">Our Team</a></li>
+            <li><a href="#" rel="noopener noreferrer">Blog</a></li>
+          </ol>
+        </li>
+        <li class="links__item">
+          <a href="#" ref="noopener" class="item__name">Careers</a>
+        </li>
+        <li class="links__item">
+          <a href="#" ref="noopener" class="item__name">About</a>
+        </li>
+        <section class="CTA">
+          <button type="button" class="CTA__input login">Login</button>
+          <button type="button" class="CTA__input logon">Register</button>
+        </section>
+      </ol>
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+      <img src="./images/icon-menu.svg" alt="menu" class="menu" />
+    </nav>
+    
+    <!-- Now, main!!-->
+    <main|>
+      <section>
+        <h1>Make remote work</h1>
+        <p>Get your team in sync, no matter your location. Streamline processes, create team rituals and watch productivity soar</p>
+        <button type="button">Learn moro</button>
+        <div class="client">
+          <img src="./images/client-databiz.svg" alt="databiz" />
+          <img src="./images/client-audiophile.svg" alt="audiophile" />
+          <img src="./images/client-meet.svgt" alt="meet" />
+          <img src="./images/client-maker1.svg" alt="maker" />
+        </div>
+      </section>
+      <div class="images">
+        <picture>
+          <source media="(max-width: 800px)" srcset="./images/image-hero-mobile.png" alt="site hero" />
+          <img src="./images/image-hero-desktop.png" alt="site hero" />
+        </picture>
+      </div>
+    </main>
+    <script src="./index.js" />
   </body>
 </html>
