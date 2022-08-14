@@ -1,0 +1,18 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  $almostwhite: hsl(0, 0%, 98%);
+  $mediumgray: hsl(0, 0%, 41%);
+  $almostblack: hsl(0, 0%, 8%);
+  $font-size-p: 18px;
+}
+
+body {
+  font-family: "Epilogue", sans-serif;
+}
