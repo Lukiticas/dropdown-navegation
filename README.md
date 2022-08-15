@@ -32,7 +32,7 @@ Web
 ![](./design/desktop-preview.jpg)
 
 Mobile
-![]("./design/mobile.jpeg")
+![]("design\mobile.jpeg")
 
 ### Links
 
