@@ -208,14 +208,14 @@ main > section {
 }
 @media screen and (max-width: 1100px) {
   main > section {
-    flex: 1;
     gap: 1em;
+    flex: 1;
     align-items: center;
     justify-content: flex-start;
   }
 }
 main > section > h1 {
-  font-size: 4.8em;
+  font-size: 4.8rem;
   font-weight: 700;
   color: hsl(0deg, 0%, 8%);
 }
@@ -257,6 +257,12 @@ main > section > .client {
   align-items: center;
   width: 100%;
   justify-content: space-evenly;
+}
+@media screen and (max-width: 1100px) {
+  main > section > .client {
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
 }
 @media screen and (max-width: 1100px) {
   main > section > .client > img {
