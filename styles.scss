@@ -8,6 +8,7 @@
   text-decoration: none;
 }
 
+//declaring some colours for the project
 $almostwhite: hsl(0, 0%, 98%);
 $mediumgray: hsl(0, 0%, 41%);
 $almostblack: hsl(0, 0%, 8%);
@@ -17,6 +18,9 @@ body {
   font-family: "Epilogue", sans-serif;
   background-color: $almostwhite;
 }
+
+//styling the navbar
+//this took some time lmao
 
 nav {
   display: flex;
@@ -28,11 +32,12 @@ nav {
 
   & .navbar__links {
     display: flex;
-    flex-grow: 1;
+    flex-grow: 1; //flex grow makes it take all the space
     z-index: 1;
     gap: 2.7em;
 
     @media (max-width: 900px) {
+      //media for the sidebar dropwdon in mobile
       position: absolute;
       flex-flow: column;
       align-items: flex-start;
@@ -48,7 +53,7 @@ nav {
         rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       visibility: hidden;
       opacity: 0;
-      transition: opacity 300ms ease-in-out;
+      transition: opacity 300ms ease-in-out; //i still can't make decent animations :(
     }
 
     & .links__item {
@@ -57,6 +62,8 @@ nav {
       flex-wrap: nowrap;
 
       & .--open {
+        //i really tried to work with transform for the SVG, but i need to learn a couple
+        //more css proprierty to make it work properly, so when active i simple flipped it
         transform: rotate(180deg);
       }
 
@@ -115,6 +122,8 @@ nav {
       border: 1px solid $almostblack;
       border-radius: 15px;
       transition: background-color 400ms ease-out;
+
+      //isnt there a easier way to flip colors?
       &:hover {
         color: $almostwhite;
         background-color: $almostblack;
@@ -139,7 +148,7 @@ nav {
     }
   }
 
-  .submenu {
+  .dropdown {
     position: relative;
 
     @media (max-width: 900px) {
@@ -147,7 +156,7 @@ nav {
       gap: 0;
     }
 
-    & .first {
+    .first {
       right: 0;
     }
 

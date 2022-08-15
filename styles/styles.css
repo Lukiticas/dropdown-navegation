@@ -127,19 +127,19 @@ nav .menu:hover {
     display: block;
   }
 }
-nav .submenu {
+nav .dropdown {
   position: relative;
 }
 @media (max-width: 900px) {
-  nav .submenu {
+  nav .dropdown {
     flex-flow: column;
     gap: 0;
   }
 }
-nav .submenu .first {
+nav .dropdown .first {
   right: 0;
 }
-nav .submenu__links {
+nav .dropdown__links {
   display: flex;
   max-height: 0;
   visibility: hidden;
@@ -154,7 +154,7 @@ nav .submenu__links {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 @media (max-width: 900px) {
-  nav .submenu__links {
+  nav .dropdown__links {
     position: relative;
     box-shadow: none;
     padding: 0;
@@ -162,28 +162,28 @@ nav .submenu__links {
     transition: all 150ms ease-in-out;
   }
 }
-nav .submenu__links li {
+nav .dropdown__links li {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
   gap: 10px;
   overflow: hidden;
 }
-nav .submenu__links li > a {
+nav .dropdown__links li > a {
   color: hsl(0deg, 0%, 41%);
   font-weight: 500;
   white-space: nowrap;
 }
-nav .submenu__links li > img {
+nav .dropdown__links li > img {
   width: 16px;
 }
-nav .submenu__links li:hover a {
+nav .dropdown__links li:hover a {
   color: hsl(0deg, 0%, 8%);
 }
-nav .submenu__links li:hover {
+nav .dropdown__links li:hover {
   filter: contrast(3);
 }
-nav .submenu .open {
+nav .dropdown .open {
   max-height: 200px;
   visibility: visible;
   margin-top: 1em;
