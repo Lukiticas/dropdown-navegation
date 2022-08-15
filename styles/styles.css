@@ -14,39 +14,36 @@ body {
 }
 
 nav {
-  align-items: center;
   display: flex;
+  align-items: center;
   width: 100%;
   height: 5em;
   padding: 0 3em;
   gap: 3.1em;
 }
-@media (max-width: 900px) {
-  nav {
-    justify-content: space-between;
-  }
-}
 nav .navbar__links {
   display: flex;
-  margin-left: auto;
   flex-grow: 1;
+  z-index: 1;
   gap: 2.7em;
 }
 @media (max-width: 900px) {
   nav .navbar__links {
-    display: none;
+    position: absolute;
+    flex-flow: column;
+    align-items: flex-start;
+    height: 100vh;
     padding: 1.5em;
     padding-top: 5em;
     width: 230px;
-    height: 100vh;
-    position: absolute;
     bottom: 0;
     right: 0;
     gap: 1.5em;
     background-color: hsl(0deg, 0%, 98%);
-    flex-flow: column;
-    align-items: flex-start;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
   }
 }
 nav .navbar__links .links__item {
@@ -69,12 +66,9 @@ nav .navbar__links .links__item .item__name {
 nav .navbar__links .links__item .item__name:hover {
   color: hsl(0deg, 0%, 8%);
 }
-@media (max-width: 900px) {
-  nav .active.navbar__links {
-    display: flex;
-    opacity: 1;
-    height: 100vh;
-  }
+nav .active.navbar__links {
+  visibility: visible;
+  opacity: 1;
 }
 nav .CTA {
   margin-left: auto;
@@ -90,7 +84,7 @@ nav .CTA {
   }
 }
 nav .CTA__input {
-  font-size: 18px;
+  font-size: 1.1rem;
   border: none;
   outline: none;
   color: hsl(0deg, 0%, 41%);
@@ -110,40 +104,47 @@ nav .CTA__input:hover {
 nav .CTA .logon {
   border: 1px solid hsl(0deg, 0%, 8%);
   border-radius: 15px;
+  transition: background-color 400ms ease-out;
 }
 nav .CTA .logon:hover {
   color: hsl(0deg, 0%, 98%);
   background-color: hsl(0deg, 0%, 8%);
 }
+nav .CTA .logon:active {
+  color: hsl(0deg, 0%, 8%);
+  background-color: hsl(0deg, 0%, 98%);
+}
 nav .menu {
   display: none;
-  z-index: 10;
 }
 nav .menu:hover {
   cursor: pointer;
 }
 @media (max-width: 900px) {
   nav .menu {
+    z-index: 10;
+    margin-left: auto;
     display: block;
   }
 }
-
-.submenu {
+nav .submenu {
   position: relative;
 }
 @media (max-width: 900px) {
-  .submenu {
+  nav .submenu {
     flex-flow: column;
     gap: 0;
   }
 }
-.submenu .first {
+nav .submenu .first {
   right: 0;
 }
-.submenu__links {
-  display: none;
+nav .submenu__links {
+  display: flex;
+  max-height: 0;
+  visibility: hidden;
   position: absolute;
-  top: 40px;
+  top: 20px;
   flex-flow: column nowrap;
   gap: 15px;
   min-width: 120px;
@@ -153,34 +154,40 @@ nav .menu:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 @media (max-width: 900px) {
-  .submenu__links {
+  nav .submenu__links {
     position: relative;
     box-shadow: none;
     padding: 0;
     top: 0;
-    margin-top: 1em;
-    margin-left: 1em;
+    transition: all 150ms ease-in-out;
   }
 }
-.submenu__links li {
+nav .submenu__links li {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
   gap: 10px;
+  overflow: hidden;
 }
-.submenu__links li > a {
+nav .submenu__links li > a {
   color: hsl(0deg, 0%, 41%);
   font-weight: 500;
   white-space: nowrap;
 }
-.submenu__links li > img {
+nav .submenu__links li > img {
   width: 16px;
 }
-.submenu__links li:hover a {
+nav .submenu__links li:hover a {
   color: hsl(0deg, 0%, 8%);
 }
-.submenu .open {
-  display: flex;
+nav .submenu__links li:hover {
+  filter: contrast(3);
+}
+nav .submenu .open {
+  max-height: 200px;
+  visibility: visible;
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
 main {
@@ -215,9 +222,25 @@ main > section {
   }
 }
 main > section > h1 {
+  position: relative;
   font-size: 4.8rem;
   font-weight: 700;
   color: hsl(0deg, 0%, 8%);
+}
+main > section > h1:hover:after {
+  width: 100%;
+}
+main > section > h1:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 5px;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  background-color: hsl(0deg, 0%, 8%);
+  transition: width 150ms ease-in;
 }
 @media screen and (max-width: 1100px) {
   main > section > h1 {
@@ -226,11 +249,11 @@ main > section > h1 {
   }
 }
 main > section > p {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 500;
   color: hsl(0deg, 0%, 41%);
   max-width: 540px;
-  line-height: 30px;
+  line-height: 1.9rem;
 }
 @media screen and (max-width: 1100px) {
   main > section > p {
@@ -244,8 +267,13 @@ main > section > button {
   border-radius: 15px;
   color: hsl(0deg, 0%, 98%);
   background-color: hsl(0deg, 0%, 8%);
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 700;
+}
+main > section > button:hover {
+  color: hsl(0deg, 0%, 8%);
+  background-color: hsl(0deg, 0%, 98%);
+  cursor: pointer;
 }
 @media screen and (max-width: 1100px) {
   main > section > button {
@@ -263,6 +291,14 @@ main > section > .client {
     margin-top: auto;
     margin-bottom: 1rem;
   }
+}
+main > section > .client > img {
+  filter: contrast(0);
+  transition: filter 300ms ease;
+}
+main > section > .client > img:hover {
+  filter: none;
+  cursor: pointer;
 }
 @media screen and (max-width: 1100px) {
   main > section > .client > img {

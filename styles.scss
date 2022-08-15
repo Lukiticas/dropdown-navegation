@@ -11,7 +11,7 @@
 $almostwhite: hsl(0, 0%, 98%);
 $mediumgray: hsl(0, 0%, 41%);
 $almostblack: hsl(0, 0%, 8%);
-$font-size-p: 18px;
+$font-size-p: 1.1rem;
 
 body {
   font-family: "Epilogue", sans-serif;
@@ -19,38 +19,36 @@ body {
 }
 
 nav {
-  align-items: center;
   display: flex;
+  align-items: center;
   width: 100%;
   height: 5em;
   padding: 0 3em;
   gap: 3.1em;
 
-  @media (max-width: 900px) {
-    justify-content: space-between;
-  }
-
   & .navbar__links {
     display: flex;
-    margin-left: auto;
     flex-grow: 1;
+    z-index: 1;
     gap: 2.7em;
 
     @media (max-width: 900px) {
-      display: none;
+      position: absolute;
+      flex-flow: column;
+      align-items: flex-start;
+      height: 100vh;
       padding: 1.5em;
       padding-top: 5em;
       width: 230px;
-      height: 100vh;
-      position: absolute;
       bottom: 0;
       right: 0;
       gap: 1.5em;
       background-color: $almostwhite;
-      flex-flow: column;
-      align-items: flex-start;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
         rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 300ms ease-in-out;
     }
 
     & .links__item {
@@ -79,11 +77,8 @@ nav {
   }
 
   & .active.navbar__links {
-    @media (max-width: 900px) {
-      display: flex;
-      opacity: 1;
-      height: 100vh;
-    }
+    visibility: visible;
+    opacity: 1;
   }
 
   .CTA {
@@ -119,82 +114,97 @@ nav {
     .logon {
       border: 1px solid $almostblack;
       border-radius: 15px;
+      transition: background-color 400ms ease-out;
       &:hover {
         color: $almostwhite;
         background-color: $almostblack;
+      }
+      &:active {
+        color: $almostblack;
+        background-color: $almostwhite;
       }
     }
   }
 
   .menu {
     display: none;
-    z-index: 10;
-
     &:hover {
       cursor: pointer;
     }
+
     @media (max-width: 900px) {
+      z-index: 10;
+      margin-left: auto;
       display: block;
     }
   }
-}
 
-.submenu {
-  position: relative;
-
-  @media (max-width: 900px) {
-    flex-flow: column;
-    gap: 0;
-  }
-
-  & .first {
-    right: 0;
-  }
-
-  &__links {
-    display: none;
-    position: absolute;
-    top: 40px;
-    flex-flow: column nowrap;
-    gap: 15px;
-    min-width: 120px;
-    padding: 25px;
-    border-radius: 20px;
-    background-color: $almostwhite;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  .submenu {
+    position: relative;
 
     @media (max-width: 900px) {
-      position: relative;
-      box-shadow: none;
-      padding: 0;
-      top: 0;
+      flex-flow: column;
+      gap: 0;
+    }
+
+    & .first {
+      right: 0;
+    }
+
+    &__links {
+      display: flex;
+      max-height: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 20px;
+      flex-flow: column nowrap;
+      gap: 15px;
+      min-width: 120px;
+      padding: 25px;
+      border-radius: 20px;
+      background-color: $almostwhite;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+      @media (max-width: 900px) {
+        position: relative;
+        box-shadow: none;
+        padding: 0;
+        top: 0;
+        transition: all 150ms ease-in-out;
+      }
+      & li {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        gap: 10px;
+        overflow: hidden;
+
+        & > a {
+          color: $mediumgray;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        & > img {
+          width: 16px;
+        }
+
+        &:hover a {
+          color: $almostblack;
+        }
+
+        &:hover {
+          filter: contrast(3);
+        }
+      }
+    }
+    & .open {
+      max-height: 200px;
+      visibility: visible;
       margin-top: 1em;
       margin-left: 1em;
     }
-    & li {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: flex-start;
-      gap: 10px;
-
-      & > a {
-        color: $mediumgray;
-        font-weight: 500;
-        white-space: nowrap;
-      }
-
-      & > img {
-        width: 16px;
-      }
-
-      &:hover a {
-        color: $almostblack;
-      }
-    }
-  }
-  & .open {
-    display: flex;
   }
 }
 
@@ -228,9 +238,27 @@ main {
     }
 
     & > h1 {
+      position: relative;
       font-size: 4.8rem;
       font-weight: 700;
       color: $almostblack;
+
+      &:hover:after {
+        width: 100%;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 0;
+        height: 5px;
+        background-color: white;
+        bottom: 0; //to place it in bottom
+        left: 0;
+        background-color: $almostblack;
+        transition: width 150ms ease-in;
+      }
+
       @media screen and (max-width: 1100px) {
         font-size: 2.3em;
         text-align: center;
@@ -242,7 +270,7 @@ main {
       font-weight: 500;
       color: $mediumgray;
       max-width: 540px;
-      line-height: 30px;
+      line-height: 1.9rem;
       @media screen and (max-width: 1100px) {
         font-size: 0.9em;
         text-align: center;
@@ -257,6 +285,12 @@ main {
       background-color: $almostblack;
       font-size: $font-size-p;
       font-weight: 700;
+
+      &:hover {
+        color: $almostblack;
+        background-color: $almostwhite;
+        cursor: pointer;
+      }
       @media screen and (max-width: 1100px) {
         font-size: 0.8rem;
       }
@@ -271,7 +305,15 @@ main {
         margin-top: auto;
         margin-bottom: 1rem;
       }
+
       & > img {
+        filter: contrast(0);
+        transition: filter 300ms ease;
+        &:hover {
+          filter: none;
+          cursor: pointer;
+        }
+
         @media screen and (max-width: 1100px) {
           width: 50px;
         }
