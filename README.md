@@ -28,11 +28,9 @@ Users should be able to:
 
 ### Screenshot
 
-Web
-![](./design/desktop-preview.jpg)
+![Web](./design/desktop-preview.jpg)
 
-Mobile
-![](./design/mobile.jpeg)
+![Mobile](./design/mobile.jpeg)
 
 ### Links
 
