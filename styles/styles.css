@@ -60,7 +60,7 @@ nav .navbar__links .links__item .item__name {
   flex-wrap: nowrap;
   gap: 5px;
   width: 100%;
-  font-weight: 700;
+  font-weight: 500;
   color: hsl(0deg, 0%, 41%);
 }
 nav .navbar__links .links__item .item__name:hover {
@@ -139,35 +139,44 @@ nav .dropdown {
 nav .dropdown .first {
   right: 0;
 }
+nav .dropdown .open {
+  padding: 1.9em;
+  max-height: 300px;
+  visibility: visible;
+}
+@media (max-width: 900px) {
+  nav .dropdown .open {
+    padding: 1.2em;
+  }
+}
 nav .dropdown__links {
+  max-height: 0px;
   display: flex;
-  max-height: 0;
   visibility: hidden;
   position: absolute;
-  top: 20px;
+  top: 40px;
   flex-flow: column nowrap;
-  gap: 15px;
-  min-width: 120px;
-  padding: 25px;
   border-radius: 20px;
   background-color: hsl(0deg, 0%, 98%);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  transition: all 120ms ease-in;
 }
 @media (max-width: 900px) {
   nav .dropdown__links {
     position: relative;
     box-shadow: none;
-    padding: 0;
     top: 0;
-    transition: all 150ms ease-in-out;
   }
 }
 nav .dropdown__links li {
+  margin-bottom: 1em;
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
-  gap: 10px;
-  overflow: hidden;
+  gap: 1rem;
+}
+nav .dropdown__links li:last-child {
+  margin-bottom: 0;
 }
 nav .dropdown__links li > a {
   color: hsl(0deg, 0%, 41%);
@@ -183,18 +192,12 @@ nav .dropdown__links li:hover a {
 nav .dropdown__links li:hover {
   filter: contrast(3);
 }
-nav .dropdown .open {
-  max-height: 200px;
-  visibility: visible;
-  margin-top: 1em;
-  margin-left: 1em;
-}
 
 main {
   max-width: 100vw;
   min-height: calc(100vh - 5em);
   display: flex;
-  flex-flow: row nowrap;
+  flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
   gap: 15px;
@@ -207,7 +210,7 @@ main {
 }
 main > section {
   max-width: 520px;
-  max-height: calc(100vh - 5em);
+  min-height: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -215,8 +218,8 @@ main > section {
 }
 @media screen and (max-width: 1100px) {
   main > section {
-    gap: 1em;
     flex: 1;
+    gap: 1em;
     align-items: center;
     justify-content: flex-start;
   }
@@ -236,10 +239,9 @@ main > section > h1:after {
   display: inline-block;
   width: 0;
   height: 5px;
-  background-color: white;
   bottom: 0;
   left: 0;
-  background-color: hsl(0deg, 0%, 8%);
+  background: linear-gradient(81deg, hsl(243deg, 79%, 68%) 0%, hsl(277deg, 42%, 51%) 60%, hsl(53deg, 75%, 54%) 100%);
   transition: width 150ms ease-in;
 }
 @media screen and (max-width: 1100px) {
@@ -252,7 +254,7 @@ main > section > p {
   font-size: 1.1rem;
   font-weight: 500;
   color: hsl(0deg, 0%, 41%);
-  max-width: 540px;
+  max-width: 450px;
   line-height: 1.9rem;
 }
 @media screen and (max-width: 1100px) {
@@ -262,13 +264,14 @@ main > section > p {
   }
 }
 main > section > button {
-  width: 10em;
+  width: 10.5em;
   height: 3.4em;
-  border-radius: 15px;
+  border-radius: 1em;
   color: hsl(0deg, 0%, 98%);
   background-color: hsl(0deg, 0%, 8%);
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 500;
+  transition: background-color 400ms ease-out;
 }
 main > section > button:hover {
   color: hsl(0deg, 0%, 8%);
@@ -285,11 +288,12 @@ main > section > .client {
   align-items: center;
   width: 100%;
   justify-content: space-evenly;
+  place-self: flex-end;
 }
 @media screen and (max-width: 1100px) {
   main > section > .client {
+    margin-bottom: 3rem;
     margin-top: auto;
-    margin-bottom: 1rem;
   }
 }
 main > section > .client > img {

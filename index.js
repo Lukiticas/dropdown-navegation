@@ -10,18 +10,16 @@ dropdown.forEach((links) => {
     e.stopPropagation();
     links.children[0].children[0].classList.toggle("--open");
     links.children[1].classList.toggle("open");
-    console.log(links.children[0]);
   });
 });
 
 //change the hamburguer image
 menu.addEventListener("click", () => {
   nav.classList.toggle("active");
-  if (nav.classList.contains("active")) {
-    menu.src = "./images/icon-close-menu.svg";
-  } else {
-    menu.src = "./images/icon-menu.svg";
-  }
+  let src = nav.classList.contains("active")
+    ? "./images/icon-close-menu.svg"
+    : "./images/icon-menu.svg";
+  menu.src = src;
 });
 
 //just stop the annoying dropdown's behaviour of closing when clicked inside
