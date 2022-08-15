@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [click here!!](https://your-solution-url.com)
+- Solution URL: [click here!!](https://lukiticas.github.io/dropdown-navegation/)
 
 ## My process
 
