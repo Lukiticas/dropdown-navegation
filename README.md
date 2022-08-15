@@ -28,9 +28,13 @@ Users should be able to:
 
 ### Screenshot
 
+<p align="center">
+
 ![Web](./design/desktop-preview.jpg)
 
 ![Mobile](./design/mobile.jpeg)
+
+</p>
 
 ### Links
 
