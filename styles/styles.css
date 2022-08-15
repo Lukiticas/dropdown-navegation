@@ -11,6 +11,7 @@
 body {
   font-family: "Epilogue", sans-serif;
   background-color: hsl(0deg, 0%, 98%);
+  overflow-x: hidden;
 }
 
 nav {
@@ -26,24 +27,23 @@ nav .navbar__links {
   flex-grow: 1;
   z-index: 1;
   gap: 2.7em;
+  transition: transform 200ms ease-in-out;
 }
 @media (max-width: 900px) {
   nav .navbar__links {
     position: absolute;
+    bottom: 0;
+    right: 0;
     flex-flow: column;
     align-items: flex-start;
     height: 100vh;
     padding: 1.5em;
     padding-top: 5em;
     width: 230px;
-    bottom: 0;
-    right: 0;
     gap: 1.5em;
+    transform: translateX(100%);
     background-color: hsl(0deg, 0%, 98%);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
   }
 }
 nav .navbar__links .links__item {
@@ -55,6 +55,7 @@ nav .navbar__links .links__item .--open {
   transform: rotate(180deg);
 }
 nav .navbar__links .links__item .item__name {
+  pointer-events: none;
   display: flex;
   place-items: center;
   flex-wrap: nowrap;
@@ -67,8 +68,7 @@ nav .navbar__links .links__item .item__name:hover {
   color: hsl(0deg, 0%, 8%);
 }
 nav .active.navbar__links {
-  visibility: visible;
-  opacity: 1;
+  transform: translateX(0);
 }
 nav .CTA {
   margin-left: auto;

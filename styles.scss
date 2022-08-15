@@ -20,6 +20,7 @@ $font-size-p: 1.1rem;
 body {
   font-family: "Epilogue", sans-serif;
   background-color: $almostwhite;
+  overflow-x: hidden;
 }
 
 //styling the navbar
@@ -38,25 +39,24 @@ nav {
     flex-grow: 1; //flex grow makes it take all the space
     z-index: 1;
     gap: 2.7em;
+    transition: transform 200ms ease-in-out; //i still can't make decent animations :(
 
     @media (max-width: 900px) {
       //media for the sidebar dropwdon in mobile
       position: absolute;
+      bottom: 0;
+      right: 0;
       flex-flow: column;
       align-items: flex-start;
       height: 100vh;
       padding: 1.5em;
       padding-top: 5em;
       width: 230px;
-      bottom: 0;
-      right: 0;
       gap: 1.5em;
+      transform: translateX(100%);
       background-color: $almostwhite;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
         rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 300ms ease-in-out; //i still can't make decent animations :(
     }
 
     & .links__item {
@@ -71,6 +71,7 @@ nav {
       }
 
       .item__name {
+        pointer-events: none;
         display: flex;
         place-items: center;
         flex-wrap: nowrap;
@@ -87,8 +88,7 @@ nav {
   }
 
   & .active.navbar__links {
-    visibility: visible;
-    opacity: 1;
+    transform: translateX(0);
   }
 
   .CTA {
