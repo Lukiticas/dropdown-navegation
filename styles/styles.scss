@@ -20,10 +20,13 @@ $font-size-p: 1.1rem;
 body {
   font-family: "Epilogue", sans-serif;
   background-color: $almostwhite;
-  overflow-x: hidden;
-  max-width: 100vw;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+}
 //styling the navbar
 //this took some time lmao
 
@@ -45,11 +48,11 @@ nav {
     @media (max-width: 900px) {
       //media for the sidebar dropwdon in mobile
       position: absolute;
-      bottom: 0;
-      right: 0;
       flex-flow: column;
       align-items: flex-start;
-      height: 100vh;
+      height: 100%;
+      top: 0;
+      right: 0;
       padding: 1.5em;
       padding-top: 5em;
       width: 230px;

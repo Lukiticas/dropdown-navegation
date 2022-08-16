@@ -11,8 +11,12 @@
 body {
   font-family: "Epilogue", sans-serif;
   background-color: hsl(0deg, 0%, 98%);
+}
+
+html,
+body {
   overflow-x: hidden;
-  max-width: 100vw;
+  position: relative;
 }
 
 nav {
@@ -33,11 +37,11 @@ nav .navbar__links {
 @media (max-width: 900px) {
   nav .navbar__links {
     position: absolute;
-    bottom: 0;
-    right: 0;
     flex-flow: column;
     align-items: flex-start;
-    height: 100vh;
+    height: 100%;
+    top: 0;
+    right: 0;
     padding: 1.5em;
     padding-top: 5em;
     width: 230px;
