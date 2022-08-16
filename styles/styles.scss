@@ -17,16 +17,17 @@ $royalpurple: hsl(243, 79%, 68%);
 $goldenorange: hsl(53, 75%, 54%);
 $font-size-p: 1.1rem;
 
-body {
-  font-family: "Epilogue", sans-serif;
-  background-color: $almostwhite;
-}
-
 html,
 body {
   overflow-x: hidden;
   position: relative;
 }
+
+body {
+  font-family: "Epilogue", sans-serif;
+  background-color: $almostwhite;
+}
+
 //styling the navbar
 //this took some time lmao
 
